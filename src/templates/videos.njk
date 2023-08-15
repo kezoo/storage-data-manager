@@ -1,0 +1,96 @@
+<div class="videos modal-type hidden">
+
+  <div class="videos-query-info">
+    <div class="videos-query-titles">
+      <div class="videos-query-titleRow">
+        <input type="radio" name="qTitleCk">
+        <input type="text" name="qTitle">
+      </div>
+    </div>
+    <div>
+      <span class="video-title-intro" data-locale="filename"></span>
+      <span class="video-query-title video-content"></span>
+    </div>
+    <div>
+      <span class="video-title-intro" data-locale="driveLabel"></span>
+      <span class="video-dLabel video-content"></span>
+    </div>
+  </div>
+
+  <div class="videos-research">
+    <p data-locale="tryToEditTitle"></p>
+    <button class="videos-research-button" onclick="reSearch();" data-locale="re-search"></button>
+    <button class="videos-uncheck-button" onclick="uncheckAll();" data-locale="uncheckAll"></button>
+  </div>
+
+  <button class="video-match" onclick="videoMatch();" data-locale="Match"></button>
+
+  <div class="videos-content-wrapper">
+    <div class="videos-content">
+      <div class="video-item">
+
+        <input type="checkbox" name="vitem">
+        <div class="video-delete hidden" onclick="onDelVideo();">
+          <span>-</span>
+        </div>
+        <div class="video-cover">
+          <img />
+        </div>
+
+        <div class="video-side">
+          <div class="video-title">
+          </div>
+
+          <div class="video-oTitle">
+            <span class="video-title-intro" data-locale="Original Title"></span>
+            <span class="video-content"></span>
+          </div>
+
+          <div class="video-type">
+            <span class="video-title-intro" data-locale="Data Type"></span>
+            <span class="video-content"></span>
+          </div>
+
+          <div class="video-year">
+            <span class="video-title-intro" data-locale="Date"></span>
+            <span class="video-content"></span>
+          </div>
+
+          <div class="video-runtime hidden">
+            <span class="video-title-intro" data-locale="Runtime"></span>
+            <span class="video-content"></span>
+          </div>
+
+          <div class="video-countries hidden">
+            <span class="video-title-intro" data-locale="Country"></span>
+            <span class="video-content"></span>
+          </div>
+
+          <div class="video-synopsis">
+            <span class="video-title-intro" data-locale="Synopsis"></span>
+            <span class="video-content"></span>
+          </div>
+        </div>
+
+        <div class="video-credits hidden">
+          <div class="video-credits-header">
+            <span class="video-credits-show" onclick="showCredits();" data-locale="Show"></span>
+            <span data-locale="Credits"></span>
+          </div>
+          <div class="video-credits-rows hidden">
+            <div class="video-credits-row">
+              <div class="video-credit">
+                <div class="video-credit-img">
+                  <div class="video-credit-name text-ecl"></div>
+                </div>
+                <div class="video-credit-role text-ecl"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="load-more-videos hidden" onclick="handlePageBtn();" data-locale="loadMore"></div>
+  </div>
+</div>

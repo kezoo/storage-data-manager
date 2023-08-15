@@ -1,0 +1,103 @@
+<div class="modal-type settings hidden">
+  <div class="settings-container">
+
+    <div class="st-selectLanguage dir-column">
+      <label class="label-set" >
+        <span data-locale="Language"></span>
+      </label>
+      <select class="st-data-select sel-language" onchange="onSelectLanguage();">
+      </select>
+    </div>
+
+    <div class="st-categories dir-column">
+      <label class="label-set">
+        <span data-locale="category"></span>
+      </label>
+      <div class="st-category-list"></div>
+      <input class="input-gp" name="addCategory" data-locale='{"valueKey": "Add Category"}' type="button" onClick="addCategory({});" ></input>
+    </div>
+
+    <div class="st-collection-symbol dir-column">
+      <label class="label-set">
+        <span data-locale="Collection symbol"></span>
+      </label>
+      <div class="st-collection-symbol-list"></div>
+      <input class="input-gp" type="button" name="addSymbol" data-locale='{"valueKey": "Add"}' onClick="addCollectionSymbol({});" />
+      <div class="tip-set-gp" data-locale="collectionSymbolNote"></div>
+    </div>
+
+    <div class="st-path-deepScan dir-column">
+      <label class="label-set">
+        <span data-locale="Path for deep scan"></span>
+      </label>
+      <div class="st-path-deepScan-list"></div>
+      <input class="input-gp" type="button" name="addPath" data-locale='{"valueKey": "Add Path"}' onClick="addDeepScanPath({});" />
+    </div>
+
+    <div class="st-file-exclusion dir-column">
+      <label class="label-set">
+        <span data-locale="File exclusion"></span>
+      </label>
+      <div class="st-file-exclusion-list"></div>
+      <input class="input-gp" type="button" name="addFileExclusion" data-locale='{"valueKey": "Add"}' onClick="addFileExclusion({});" />
+    </div>
+
+    <div class="st-formatFileName dir-column">
+      <label class="label-set">
+        <span data-locale="formatFileName"></span>
+      </label>
+      <div class="st-formatFileName-list"></div>
+      <input class="input-gp" type="button" data-locale='{"valueKey": "Add"}' onClick="formatFileName({});" />
+    </div>
+
+    <div class="st-clearDataBeforeAdding dir-column">
+      <label class="label-set">
+        <span data-locale="clearDataBeforeAdding">aaaaa</span>
+      </label>
+      <label class="checkMark-set">
+        <input id='clearDataBeforeAdding' class='nr-ckBox' type='checkbox' onchange="onInputClearDataBeforeAddingChange();" />
+        <span data-locale="doClear"></span>
+      </label>
+      <label class="checkMark-set keepWatched-wp nr-hTopMarginS">
+        <input id='keepWatched' class='nr-ckBox' type='checkbox' onchange="onInputKeepThoseWatchedVideosChange();" />
+        <span data-locale="keepThoseWatchedVideos"></span>
+      </label>
+    </div>
+
+    <div class="st-potential-duplicate dir-column">
+      <label class="label-set">
+        <span data-locale="Potential duplicate"></span>
+      </label>
+      <select class="st-data-select sel-pDup" name="p-dup" onchange="onSettingsPotentialDup();">
+        <option value="keep" data-locale="Keep both"></option>
+        <option value="override" data-locale="Override"></option>
+      </select>
+    </div>
+
+    <div class="st-tmdb-token dir-column">
+      <label class="label-set">
+        <span data-locale="tmdbApiKey"></span>
+      </label>
+      <span contentEditable class="st-data-row-item-input st-tmdb-token-input input-gp" onblur="onSetTmdbKey();"></span>
+    </div>
+    <div class="st-proxy dir-column">
+      <label class="label-set">
+        <span data-locale="proxy"></span>
+      </label>
+      <span contentEditable class="st-data-row-item-input input-gp" onblur="onSetProxy();"></span>
+    </div>
+
+    <div class="st-pageSize dir-column">
+      <label class="label-set">
+        <span data-locale="Page size"></span>
+      </label>
+      <select class="st-data-select sel-pDup" name="p-dup" onchange="onPageSizeChange();">
+      </select>
+    </div>
+
+    <div class="st-clearCache dir-column hidden">
+      <input class="input-gp" type="button" data-locale='{"valueKey": "hardReload"}' onClick="clearCache({doReload: 1});" />
+      <div class="tip-set-gp" data-locale="cacheIssueTip"></div>
+    </div>
+  </div>
+</div>

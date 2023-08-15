@@ -1,0 +1,14 @@
+server:
+  host: localhost
+  port: 8676
+
+env:
+  enviroinment: local
+  logLevel: info
+  name: app
+  version: 0.0.0
+
+secret: secret
+
+db:
+  client: sqlite3

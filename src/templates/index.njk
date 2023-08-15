@@ -1,0 +1,171 @@
+<link rel="stylesheet" type="text/css" href="./medias/css/global.css" />
+<link rel="stylesheet" type="text/css" href="./medias/css/styles.css" />
+<link rel="stylesheet" type="text/css" href="./medias/css/loader.css" />
+<link rel="stylesheet" type="text/css" href="./medias/css/toast.css" />
+<title></title>
+<link rel="shortcut icon" href="/medias/img/favicon.ico" type="image/x-icon">
+<script type="text/javascript" src="/medias/js/util.js" ></script>
+<script type="text/javascript" src="./medias/js/locale.js" ></script>
+<script type="text/javascript" src="./medias/js/modal.js" ></script>
+<script type="text/javascript" src="./medias/js/drives.js" ></script>
+<script type="text/javascript" src="./medias/js/settings.js" ></script>
+<script type="text/javascript" src="./medias/js/render.js" ></script>
+<script type="text/javascript" src="./medias/js/page.js" ></script>
+<script type="text/javascript" id="serverConfCont" data-conf="{{serverConf}}"></script>
+
+<div class="h-bg"><div class="h-bg-fix"></div></div>
+<div class="list-head">
+  <div class="list-head-wp">
+    <div class="uni-verticalU-wrapper uni-v-category">
+      <div class="uni-verticalU-label" data-locale="category"></div>
+      <select class="st-data-select" name="selCategory"></select>
+    </div>
+
+    <div class="uni-verticalU-wrapper uni-v-subCategory hidden">
+      <div class="uni-verticalU-label" data-locale="subCategory"></div>
+      <select class="st-data-select"></select>
+    </div>
+
+    <div class="uni-verticalU-wrapper uni-v-driveLabels hidden">
+      <div class="uni-verticalU-label" data-locale="driveLabel"></div>
+      <div class="label-select-wrapper select-wrapper">
+        <div class="label-select-header select-wrapper-in">
+          <select id="label-select" class="st-data-select" value="" data-label="">
+            <option class="select-label-option" selected="selected">All</option>
+          </select>
+        </div>
+
+        <div class="select-label-options select-options hidden">
+          <input
+            type="text"
+            name="label"
+            class="label-select-input"
+          >
+          <div class="select-label-options-r">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="uni-verticalU-wrapper uni-v-sortBy">
+      <div class="uni-verticalU-label">
+        <span data-locale="sortBy"></span>
+        <label >
+          <span data-locale="reverse"></span>
+          <input type="checkbox" id="reverse-order-hdd" />
+        </label>
+      </div>
+      <select class="st-data-select"></select>
+    </div>
+  </div>
+
+  <div class="list-head-wp">
+    <div class="input-wrapper">
+      <input
+        type="text"
+        class="input-search"
+        id="search"
+        onBlur="return false;"
+        data-locale='{"placeholderKey": "typeToQuery"}'
+      />
+      <span class="input-clear hidden" onclick="handleClearClassnames(document.querySelector('#search').value, true);">X</span>
+    </div>
+    <label class="label-ckbox ck-strict ckBox-common small-font">
+      <input type="checkbox" id="ckbox-strict" />
+      <span data-locale="wholeWord"></span>
+    </label>
+  </div>
+
+  <div class="list-head-wp">
+    <label class="label-ckbox small-font ckBox-common">
+      <input type="checkbox" id="ckbox-watched" />
+      <span data-locale="watchHistory"></span>
+    </label>
+    <label class="label-ckbox small-font ckBox-common">
+      <input type="checkbox" id="ckbox-watchlist" />
+      <span data-locale="watchlist"></span>
+    </label>
+    <input type="button" onClick="searchChange();" value="" class="btnQuery" data-locale='{"valueKey": "search"}' />
+    <input type="button" onClick="clearFilters();" data-locale='{"valueKey": "clear"}' value="" class="btnClear" />
+    <input type="button" onClick="onAddDrivesDataClick();" value="+" class="btnAddDriveData" />
+    <img src='./medias/img/gear.png' class="btnSettings" onClick="openSettings();" />
+    <div data-dir="up" class="btnUpSearchPanel" /></div>
+  </div>
+</div>
+<section>
+  <div class="row row-prop"></div>
+  <div class="row-wrapper"></div>
+</section>
+<div data-dir="down" class="btnUpSearchPanel" /></div>
+<div class="pager">
+  <div class="pager-ctrl">
+    <div class="hdd-item-selection-v" >
+      <input data-checkbox="all" type="checkbox" class="hdd-itemSelection-all ckbox-square hidden" onChange="onSquareBoxChange();" />
+      <span class="hdd-itemSelection-trigger" onClick="handleSelection();" data-locale="Select"></span>
+      <img src="./medias/img/three-dots-h.png" class="hdd-item-moreActions hidden" onclick="popMoreActions();" />
+    </div>
+    <div class="pager-page-contentSet">
+      <input type="button" name="loadMore" data-locale='{"valueKey": "loadMore"}' class="load-more input-gp">
+      <span class="prev-page pageCtrl disabled hidden">〈<span></span></span>
+      <span class="next-page pageCtrl hidden">〉</span>
+      <div
+        class='select-page-wp'
+      >
+        <select id="select-page" class="st-data-select" value="1" data-label="1">
+          <option class="page-option nR-option" selected="selected">1</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal">
+  <div class="modal-content">
+    <div class="modal-inner">
+      {% include "videos.njk" %}
+      {% include "drives.njk" %}
+      {% include "settings.njk" %}
+      {% include "menus.njk" %}
+    </div>
+  </div>
+</div>
+<div class="watch-status-m pos-abs hidden">
+  <div class="watch-status-overlay pos-abs"></div>
+  <div
+    class="watch-statusWp c-boxShadowL"
+  >
+    <div class='watch-statusWp-title'><span data-locale="planToWatch"></span><span class='watch-status-displayValue'></span></div>
+    <div class="watch-status-input-wp">
+      <input
+        type='range'
+        id='watch-status'
+        step="1"
+        value="1"
+        class=""
+      />
+    </div>
+
+    <input type="button" value="Submit" class="btnSubmit watching input-gp" />
+  </div>
+</div>
+
+
+<div class="loader hidden">
+  <div class="lds-spinner">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div class="toast hidden">
+  <div class="toast-msg"></div>
+</div>

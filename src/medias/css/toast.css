@@ -1,0 +1,16 @@
+.toast {
+  position: fixed;
+  left: 20px;
+  right: 20px;
+  top: 50%;
+  z-index: 1600;
+  text-align: center;
+}
+.toast-msg {
+  display: inline-block;
+  background-color: #4c6073;
+  padding: 15px;
+  color: #fff;
+  border-radius: 7px;
+  box-shadow: 1px 0px 7px 5px rgba(210, 226, 241, 0.21);
+}

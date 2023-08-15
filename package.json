@@ -1,0 +1,125 @@
+{
+  "name": "storage-data-manager",
+  "version": "1.8.19",
+  "description": "Manage all you hard disk drive data with a very easy UI and highly customizable configuration.",
+  "main": "src/bin/server",
+  "author": "Wrifun Tech",
+  "license": "GNU GPLv3",
+  "repository": "wrifun-tech/storage-data-manager",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "keywords": [
+    "hard disk drive data",
+    "hdd data",
+    "storage data",
+    "computer data",
+    "pc data",
+    "data manager",
+    "utility",
+    "app",
+    "windows",
+    "linux",
+    "mac osx"
+  ],
+  "scripts": {
+    "start": "node src/bin/server",
+    "desktop": "electron electron-main.js",
+    "dev": "nodemon src/bin/server --watch src -e ts,js,json,njk,css",
+    "postinstall": "electron-builder install-app-deps",
+    "build-win": "electron-builder build --ia32 --x64"
+  },
+  "build": {
+    "appId": "wrifun.tech.storagedata",
+    "productName": "StorageDataManager",
+    "files": [
+      "electron-main.js",
+      "package.json",
+      "data",
+      "config",
+      "src",
+      ".env",
+      "knexfile.js",
+      "node_modules",
+      "!src/medias/covers/*",
+      "!src/medias/credits/*",
+      "!src/medias/tmp/*"
+    ],
+    "extends": null,
+    "extraMetadata": {
+      "main": "electron-main.js"
+    },
+    "asarUnpack": [
+      "data/db.sqlite3.sample",
+      "data/hdd-extra-data.json.sample"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable"
+        },
+        {
+          "target": "nsis"
+        }
+      ]
+    },
+    "portable": {
+      "artifactName": "StorageDataManager-v1.8.19-portable.exe"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "directories": {
+      "buildResources": "resources",
+      "output": "release"
+    },
+    "publish": null
+  },
+  "dependencies": {
+    "@koa/router": "^12.0.0",
+    "dotenv": "6.2.0",
+    "electron-node-config": "^1.1.0",
+    "fs-extra": "9.0.1",
+    "humps": "2.0.0",
+    "js-yaml": "^4.1.0",
+    "jsonwebtoken": "8.4.0",
+    "kcors": "2.2.2",
+    "knex": "0.13.0",
+    "koa": "2.6.2",
+    "koa-bodyparser": "4.2.1",
+    "koa-helmet": "4.0.0",
+    "koa-jwt": "3.5.1",
+    "koa-logger": "3.2.0",
+    "koa-response-time": "2.1.0",
+    "koa-router": "7.4.0",
+    "koa-send": "^5.0.0",
+    "koa-views": "^7.0.1",
+    "koa-websocket": "^6.0.0",
+    "koa-x-request-id": "2.0.0",
+    "nunjucks": "^3.2.3",
+    "p-event": "2.1.0",
+    "portfinder": "^1.0.28",
+    "qs": "6.6.0",
+    "request": "2.88.0",
+    "request-promise": "4.2.0",
+    "slug": "0.9.3",
+    "sqlite3": "5.0.2",
+    "stoppable": "1.1.0",
+    "systeminformation": "^5.8.6",
+    "tcp-port-used": "^1.0.2",
+    "validator": "10.10.0",
+    "ws": "^8.13.0",
+    "yargs": "16.2.0",
+    "yup": "0.26.6"
+  },
+  "devDependencies": {
+    "electron": "^13.5.1",
+    "electron-builder": "22.11.3",
+    "nodemon": "1.18.9",
+    "prettier": "1.15.3"
+  }
+}
